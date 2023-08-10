@@ -15,3 +15,5 @@ yarn-error.log*
 # Tests
 /coverage
 /.nyc_output
+
+/data
