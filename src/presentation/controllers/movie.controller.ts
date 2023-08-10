@@ -17,8 +17,10 @@ import { MovieDTO } from 'src/core/dtos/movie/movie.dto';
 import { AuthGuard } from './guards/auth.guard';
 import { RolesGuard } from './guards/roles.guard';
 import { UserRole } from 'src/core/enums';
+import { ApiBearerAuth, ApiBody, ApiParam, ApiTags } from '@nestjs/swagger';
 
 @Controller('api/movies')
+@ApiTags('Movies')
 export class MovieController {
   constructor(private readonly movieUseCases: MovieUseCases) {}
 
@@ -30,6 +32,8 @@ export class MovieController {
 
   @Get('/:id')
   @UseGuards(AuthGuard, RolesGuard([UserRole.REGULAR]))
+  @ApiBearerAuth()
+  @ApiParam({ name: 'id', required: true, type: Number })
   async getByIdAsync(@Param('id', ParseIntPipe) id: number): Promise<MovieDTO> {
     const movie = await this.movieUseCases.getByIdAsync(id);
     return MovieMapper.toResponseDTO(movie);
@@ -37,6 +41,8 @@ export class MovieController {
 
   @Post()
   @UseGuards(AuthGuard, RolesGuard([UserRole.ADMIN]))
+  @ApiBearerAuth()
+  @ApiBody({ type: CreateMovieDTO })
   async createAsync(@Body() movieData: CreateMovieDTO): Promise<MovieDTO> {
     const createdMovie = await this.movieUseCases.createAsync(movieData);
     return MovieMapper.toResponseDTO(createdMovie);
@@ -44,6 +50,9 @@ export class MovieController {
 
   @Patch('/:id')
   @UseGuards(AuthGuard, RolesGuard([UserRole.ADMIN]))
+  @ApiBearerAuth()
+  @ApiParam({ name: 'id', required: true, type: Number })
+  @ApiBody({ type: UpdateMovieDTO })
   async updateAsync(
     @Param('id', ParseIntPipe) id: number,
     @Body() movieData: UpdateMovieDTO,
@@ -53,6 +62,8 @@ export class MovieController {
 
   @Delete('/:id')
   @UseGuards(AuthGuard, RolesGuard([UserRole.ADMIN]))
+  @ApiBearerAuth()
+  @ApiParam({ name: 'id', required: true, type: Number })
   async deleteByIdAsync(@Param('id', ParseIntPipe) id: number): Promise<void> {
     return this.movieUseCases.deleteAsync(id);
   }
