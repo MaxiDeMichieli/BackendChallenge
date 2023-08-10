@@ -2,17 +2,22 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { IUserRepository } from '../../core/abstracts/database/user.repository';
 import { UserRepository } from './repositories/user.repository';
-import { UserDBEntity } from './entities/user.db-entity';
-import { ORM_CONFIG } from './config';
+import { DB_ENTITIES, ORM_CONFIG } from './config';
+import { IMovieRepository } from 'src/core/abstracts/database/movie.repository';
+import { MovieRepository } from './repositories/movie.repository';
 
 @Module({
-  imports: [TypeOrmModule.forRoot(ORM_CONFIG), TypeOrmModule.forFeature([UserDBEntity])],
+  imports: [TypeOrmModule.forRoot(ORM_CONFIG), TypeOrmModule.forFeature(DB_ENTITIES)],
   providers: [
     {
       provide: IUserRepository,
       useClass: UserRepository,
     },
+    {
+      provide: IMovieRepository,
+      useClass: MovieRepository,
+    },
   ],
-  exports: [IUserRepository],
+  exports: [IUserRepository, IMovieRepository],
 })
 export class DatabaseModule {}

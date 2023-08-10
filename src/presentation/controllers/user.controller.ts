@@ -4,7 +4,7 @@ import { UserLoginDTO } from 'src/core/dtos/user/user-login.dto';
 import { UserRegisterDTO } from 'src/core/dtos/user/user-register.dto';
 import { UserUseCases } from 'src/use-cases/user/user.use-cases';
 
-@Controller('api/user')
+@Controller('api/users')
 export class UserController {
   constructor(private readonly userUseCases: UserUseCases) {}
 

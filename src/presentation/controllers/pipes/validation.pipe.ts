@@ -1,5 +1,5 @@
 import { ValidationPipe, BadRequestException } from '@nestjs/common';
-import { INVALID_BODY } from 'src/core/constants/errors';
+import { INVALID_BODY_ERROR } from 'src/core/constants/errors';
 
 export const customValidationPipe = (): ValidationPipe =>
   new ValidationPipe({
@@ -7,7 +7,7 @@ export const customValidationPipe = (): ValidationPipe =>
       return new BadRequestException({
         statusCode: 400,
         error: 'Bad Request',
-        message: INVALID_BODY,
+        message: INVALID_BODY_ERROR,
         errors: errors.reduce(
           (acc, err) => ({
             ...acc,
