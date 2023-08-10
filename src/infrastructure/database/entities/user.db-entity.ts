@@ -8,7 +8,7 @@ import {
 } from 'typeorm';
 import { UserRole } from 'src/core/enums';
 
-@Entity()
+@Entity('users')
 export class UserDBEntity {
   @PrimaryGeneratedColumn()
   id: number;
@@ -24,6 +24,9 @@ export class UserDBEntity {
 
   @Column()
   role: UserRole;
+
+  @Column()
+  password: string;
 
   @CreateDateColumn()
   createdAt: string;

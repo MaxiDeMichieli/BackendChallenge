@@ -1,6 +1,6 @@
 import { Repository, FindOneOptions } from 'typeorm';
-import { IBaseRepository } from 'src/core/abstracts/base.repository';
 import { IDBMapper } from '../mappers/mapper.interface';
+import { IBaseRepository } from 'src/core/abstracts/database/base.repository';
 
 interface BaseDBEntity {
   id: number | string;

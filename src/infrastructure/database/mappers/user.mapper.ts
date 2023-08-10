@@ -10,6 +10,7 @@ export class UserDBMapper implements IDBMapper<User, UserDBEntity> {
       lastName: entity.lastName,
       email: entity.email,
       role: entity.role,
+      password: entity.password,
       createdAt: entity.createdAt,
       updatedAt: entity.updatedAt,
     };
@@ -22,6 +23,7 @@ export class UserDBMapper implements IDBMapper<User, UserDBEntity> {
       lastName: entity.lastName,
       email: entity.email,
       role: entity.role,
+      password: entity.password,
       createdAt: entity.createdAt,
       updatedAt: entity.updatedAt,
     };
@@ -34,6 +36,7 @@ export class UserDBMapper implements IDBMapper<User, UserDBEntity> {
       lastName: entity.lastName,
       email: entity.email,
       role: entity.role,
+      password: entity.password,
       createdAt: entity.createdAt,
       updatedAt: entity.updatedAt,
     };

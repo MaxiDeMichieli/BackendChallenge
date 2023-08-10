@@ -1,10 +1,4 @@
-import { TypeOrmModuleOptions } from '@nestjs/typeorm';
+import 'dotenv/config';
 
 export const PORT = process.env.PORT;
-
-export const ORM_CONFIG: TypeOrmModuleOptions = {
-  type: 'sqlite',
-  database: 'data/conexa.db',
-  entities: [__dirname + '/**/*.db-entity{.ts,.js}'],
-  synchronize: true,
-};
+export const JWT_SECRET = process.env.JWT_SECRET;
