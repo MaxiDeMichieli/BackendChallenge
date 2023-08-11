@@ -9,7 +9,7 @@ export class AuthService implements IAuthService {
   constructor(private jwtService: JwtService) {}
 
   async generateTokenAsync(payload: AuthDataDTO): Promise<string> {
-    return this.jwtService.signAsync(payload);
+    return this.jwtService.signAsync(payload, { secret: JWT_SECRET });
   }
 
   async validateTokenAsync(token: string): Promise<AuthDataDTO> {

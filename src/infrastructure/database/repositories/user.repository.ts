@@ -9,11 +9,15 @@ import { IUserRepository } from 'src/core/abstracts/database/user.repository';
 
 @Injectable()
 export class UserRepository extends BaseRepository<User, UserDBEntity> implements IUserRepository {
+  private userMapper: UserDBMapper;
+
   constructor(@InjectRepository(UserDBEntity) private userRepository: Repository<UserDBEntity>) {
     super(userRepository, new UserDBMapper());
+    this.userMapper = new UserDBMapper();
   }
 
   async getOneByEmail(email: string): Promise<User> {
-    return this.userRepository.findOne({ where: { email } });
+    const user = await this.userRepository.findOne({ where: { email } });
+    return this.userMapper.toDomain(user);
   }
 }
