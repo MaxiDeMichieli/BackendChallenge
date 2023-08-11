@@ -1,8 +1,8 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
-import { MovieDBEntity } from 'src/infrastructure/database/entities/movie.db-entity';
-import { MovieDBMapper } from 'src/infrastructure/database/mappers/movie.mapper';
-import { MovieRepository } from 'src/infrastructure/database/repositories/movie.repository';
+import { MovieDBEntity } from 'src/providers/database/entities/movie.db-entity';
+import { MovieDBMapper } from 'src/providers/database/mappers/movie.mapper';
+import { MovieRepository } from 'src/providers/database/repositories/movie.repository';
 
 class RepositoryMock {}
 

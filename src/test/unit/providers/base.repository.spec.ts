@@ -1,4 +1,4 @@
-import { BaseRepository } from 'src/infrastructure/database/repositories/base.repository';
+import { BaseRepository } from 'src/providers/database/repositories/base.repository';
 import { Repository } from 'typeorm';
 
 class RepositoryMock {

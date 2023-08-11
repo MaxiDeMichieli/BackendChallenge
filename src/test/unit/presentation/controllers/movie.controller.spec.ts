@@ -7,7 +7,7 @@ import { HttpStatus, INestApplication } from '@nestjs/common';
 import * as request from 'supertest';
 import { customValidationPipe } from 'src/presentation/controllers/pipes/validation.pipe';
 import { MovieController } from 'src/presentation/controllers/movie.controller';
-import { AuthModule } from 'src/infrastructure/auth/auth.module';
+import { AuthModule } from 'src/providers/auth/auth.module';
 import { IAuthService } from 'src/core/abstracts/auth/auth.service';
 
 const movieUseCasesMock = {

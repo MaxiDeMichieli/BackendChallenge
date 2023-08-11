@@ -2,7 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { JwtService } from '@nestjs/jwt';
 import { UserRole } from 'src/core/enums';
 import { AuthDataDTO } from 'src/core/dtos/auth/auth-data.dto';
-import { AuthService } from 'src/infrastructure/auth/auth.service';
+import { AuthService } from 'src/providers/auth/auth.service';
 
 const jwtServiceMock = {
   signAsync: jest.fn(() => Promise.resolve('mockedToken')),

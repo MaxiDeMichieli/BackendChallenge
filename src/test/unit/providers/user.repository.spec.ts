@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
-import { UserDBEntity } from 'src/infrastructure/database/entities/user.db-entity';
-import { UserRepository } from 'src/infrastructure/database/repositories/user.repository';
+import { UserDBEntity } from 'src/providers/database/entities/user.db-entity';
+import { UserRepository } from 'src/providers/database/repositories/user.repository';
 
 class RepositoryMock {
   findOne = jest.fn();

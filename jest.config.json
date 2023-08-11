@@ -21,8 +21,8 @@
     "src/main.ts",
     "src/presentation/documentation",
     "src/core/entities",
-    "src/infrastructure/database/entities",
-    "src/infrastructure/database/mappers",
+    "src/providers/database/entities",
+    "src/providers/database/mappers",
     "config.ts"
   ],
   "setupFiles": ["<rootDir>/test/setEnvVars.ts"]
