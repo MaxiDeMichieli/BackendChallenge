@@ -1,7 +1,7 @@
 import { BaseRepository } from 'src/infrastructure/database/repositories/base.repository';
-import { Repository, FindOneOptions } from 'typeorm';
+import { Repository } from 'typeorm';
 
-class RepositoryMock<U> {
+class RepositoryMock {
   find = jest.fn();
   findOne = jest.fn();
   save = jest.fn();
@@ -9,21 +9,24 @@ class RepositoryMock<U> {
   softDelete = jest.fn();
 }
 
-class DBMapperMock<T, U> {
+class DBMapperMock {
   toDomain = jest.fn();
   toDatabase = jest.fn();
   toDatabasePartial = jest.fn();
 }
 
 describe('BaseRepository', () => {
-  let baseRepository: BaseRepository<any, any>;
-  let repositoryMock: RepositoryMock<any>;
-  let mapperMock: DBMapperMock<any, any>;
+  let baseRepository: BaseRepository<unknown, { id: number }>;
+  let repositoryMock: RepositoryMock;
+  let mapperMock: DBMapperMock;
 
   beforeAll(async () => {
-    repositoryMock = new RepositoryMock<any>();
-    mapperMock = new DBMapperMock<any, any>();
-    baseRepository = new BaseRepository(repositoryMock as unknown as Repository<any>, mapperMock);
+    repositoryMock = new RepositoryMock();
+    mapperMock = new DBMapperMock();
+    baseRepository = new BaseRepository(
+      repositoryMock as unknown as Repository<unknown>,
+      mapperMock,
+    );
   });
 
   describe('getAll', () => {
@@ -49,7 +52,7 @@ describe('BaseRepository', () => {
       expect(result).toEqual({ id: 1 });
       expect(repositoryMock.findOne).toHaveBeenCalledWith({
         where: { id: 1 },
-      } as FindOneOptions<any>);
+      });
       expect(mapperMock.toDomain).toHaveBeenCalledWith({ id: 1 });
     });
   });

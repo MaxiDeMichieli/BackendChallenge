@@ -19,7 +19,6 @@ const movieUseCasesMock = {
 };
 
 describe('MovieController', () => {
-  let controller: MovieController;
   let app: INestApplication;
   let authService: IAuthService;
 
@@ -42,7 +41,6 @@ describe('MovieController', () => {
       ],
     }).compile();
 
-    controller = module.get<MovieController>(MovieController);
     authService = module.get<IAuthService>(IAuthService);
     app = module.createNestApplication();
     app.useGlobalPipes(customValidationPipe());

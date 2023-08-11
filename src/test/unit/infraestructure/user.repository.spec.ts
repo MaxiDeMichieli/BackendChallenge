@@ -3,16 +3,16 @@ import { getRepositoryToken } from '@nestjs/typeorm';
 import { UserDBEntity } from 'src/infrastructure/database/entities/user.db-entity';
 import { UserRepository } from 'src/infrastructure/database/repositories/user.repository';
 
-class RepositoryMock<U> {
+class RepositoryMock {
   findOne = jest.fn();
 }
 
 describe('UserRepository', () => {
   let userRepository: UserRepository;
-  let repositoryMock: RepositoryMock<any>;
+  let repositoryMock: RepositoryMock;
 
   beforeEach(async () => {
-    repositoryMock = new RepositoryMock<any>();
+    repositoryMock = new RepositoryMock();
 
     const module: TestingModule = await Test.createTestingModule({
       providers: [

@@ -4,7 +4,7 @@ import { MovieDBEntity } from 'src/infrastructure/database/entities/movie.db-ent
 import { MovieDBMapper } from 'src/infrastructure/database/mappers/movie.mapper';
 import { MovieRepository } from 'src/infrastructure/database/repositories/movie.repository';
 
-class RepositoryMock<U> {}
+class RepositoryMock {}
 
 class MovieDBMapperMock {}
 

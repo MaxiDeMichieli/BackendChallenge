@@ -13,7 +13,6 @@ const userUseCasesMock = {
 };
 
 describe('UserController', () => {
-  let controller: UserController;
   let app: INestApplication;
 
   const baseUserRegisterData: UserRegisterDTO = {
@@ -34,7 +33,6 @@ describe('UserController', () => {
       ],
     }).compile();
 
-    controller = module.get<UserController>(UserController);
     app = module.createNestApplication();
     app.useGlobalPipes(customValidationPipe());
     await app.init();

@@ -13,7 +13,6 @@ const jwtServiceMock = {
 
 describe('AuthService', () => {
   let authService: AuthService;
-  let jwtService: JwtService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -21,7 +20,6 @@ describe('AuthService', () => {
     }).compile();
 
     authService = module.get<AuthService>(AuthService);
-    jwtService = module.get<JwtService>(JwtService);
   });
 
   describe('generateTokenAsync', () => {
